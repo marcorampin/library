@@ -7,10 +7,43 @@
 body {
     width: 100%;
     height: 100vh;
+
+    /*display: flex;
+    flex-direction: column;
+    align-items: center;*/
+}
+
+h1 {
+    padding-top: 0.5em;
+    text-align: center;
+}
+
+.newBookBtn {
+    font-size: 2em;
+    position: fixed;
+    top: 0.25em;
+    right: 0.25em;
+    height: 2em;
+    width: 2em;
+    border-radius: 0.5em;
+    border: none;
+    color: white;
+    background-color: darkgreen;
+    cursor: pointer;
+}
+
+.newBookForm {
+    position: fixed;
+    top: 25vh;
+    left: 25%;
+    height: 50vh;
+    width: 50%;
+    padding: 1em;
+
+    display: grid;
 }
 
 .shelves {
-    background-color: red;
     padding: 2em 5em;
 
     display: grid;
@@ -22,14 +55,8 @@ body {
     align-items: center;
 }
 
-.shelves > h1 {
-    grid-column: 1 / -1;
-    grid-row: 1;
-    text-align: center;
-}
-
 .card {
-    background-color: white;
+    background-color: lightgrey;
     padding: 1em;
     border-radius: 7px;
 
@@ -51,3 +78,4 @@ body {
 .card > .value {
     grid-column: 2;
 }
+

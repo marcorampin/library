@@ -1,7 +1,7 @@
-let shelves = document.querySelector('.shelves');
-//div.innerText = 'Ciao0';
-
+const shelves = document.querySelector('.shelves');
 const myLibrary = [];
+const addBookBtn = document.querySelector('.newBookBtn');
+addBookBtn.addEventListener('click', addNewBook);
 
 function Book(title, author, pages, read) {
     this.title = title;
@@ -15,10 +15,22 @@ function addBookToLibrary(title, author) {
     myLibrary.push(book);
 }
 
-function printLibrary(){
+function printLibrary() {
     for (const book of myLibrary) {
 	createCard(book);
     }
+}
+
+function deleteLibrary() {
+    const cards = document.querySelectorAll('.card');
+    for (const card of cards) {
+	shelves.removeChild(card);
+    }
+}
+
+function resetLibrary() {
+    deleteLibrary();
+    printLibrary();
 }
 
 function createCard(book) {
@@ -28,7 +40,7 @@ function createCard(book) {
     shelves.appendChild(card);
     for (const key of Object.keys(book)) {
 	if (key === 'title') {
-	    addBookInfo(book, card, 'title', 'h2', key, book[key]);
+	    addBookInfo(book, card, 'h2', 'title', key, book[key]);
 	}
 	else {
 	    addBookInfo(book, card, 'p', 'key', key, key);
@@ -44,10 +56,32 @@ function addBookInfo(book, card, el, elClass, key, value) {
     card.appendChild(element);
 }
 
+function addNewBook() {
+    const dialog = document.querySelector('.newBookForm');
+    dialog.showModal();
+}
+
 addBookToLibrary('Hobbit', 'JFK');
 addBookToLibrary('Potter', 'Rowlings');
 addBookToLibrary('Foundation', 'Asimov');
 addBookToLibrary('Poirot', 'Christie');
 addBookToLibrary('Cicciomerda', 'Cicciogamer89');
+addBookToLibrary('Cicciomerda2', 'Cicciogamer89');
+addBookToLibrary('Cicciomerda2', 'Cicciogamer89');
+addBookToLibrary('Cicciomerda2', 'Cicciogamer89');
+addBookToLibrary('Cicciomerda2', 'Cicciogamer89');
+addBookToLibrary('Cicciomerda2', 'Cicciogamer89');
+addBookToLibrary('Cicciomerda2', 'Cicciogamer89');
+addBookToLibrary('Cicciomerda2', 'Cicciogamer89');
+addBookToLibrary('Cicciomerda2', 'Cicciogamer89');
+addBookToLibrary('Cicciomerda2', 'Cicciogamer89');
+addBookToLibrary('Cicciomerda2', 'Cicciogamer89');
+addBookToLibrary('Cicciomerda2', 'Cicciogamer89');
+addBookToLibrary('Cicciomerda2', 'Cicciogamer89');
+addBookToLibrary('Cicciomerda2', 'Cicciogamer89');
+addBookToLibrary('Cicciomerda2', 'Cicciogamer89');
+addBookToLibrary('Cicciomerda2', 'Cicciogamer89');
+addBookToLibrary('Cicciomerda2', 'Cicciogamer89');
+addBookToLibrary('Cicciomerda2', 'Cicciogamer89');
 addBookToLibrary('Cicciomerda2', 'Cicciogamer89');
 printLibrary();
