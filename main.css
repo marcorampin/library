@@ -7,10 +7,6 @@
 body {
     width: 100%;
     height: 100vh;
-
-    /*display: flex;
-    flex-direction: column;
-    align-items: center;*/
 }
 
 h1 {
@@ -38,9 +34,42 @@ h1 {
     left: 25%;
     height: 50vh;
     width: 50%;
-    padding: 1em;
+    padding: 2em;
 
-    display: grid;
+    display: none;
+    grid-template-columns: 1fr 3fr;
+    grid-auto-columns: 1fr;
+    align-items: center;
+    gap: 1em;
+}
+
+.newBookForm > h2 {
+    grid-row: 1;
+    grid-column: 1 / -1;
+}
+
+.newBookForm > label {
+    grid-column: 1;
+}
+
+.newBookForm > input {
+    grid-column: 2;
+    height: 1em;
+    text-align: right;
+    padding: 0.5em 1em;
+}
+
+.newBookForm > input[type='checkbox'] {
+    height: 2em;
+}
+
+.newBookForm > button {
+    width: 7em;
+    justify-self: right;
+}
+
+.newBookForm > .confirmFormBtn {
+    justify-self: left;
 }
 
 .shelves {
