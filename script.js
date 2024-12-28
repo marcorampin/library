@@ -56,7 +56,16 @@ function createCard(book) {
     }
     addBookInfo(book, card, 'button', 'delBtn', 'Delete');
     addBookInfo(book, card, 'button', 'readStat', 'Read status');
-    card.addEventListener('click', e => console.log(e.target.parentElement.id));
+    card.addEventListener('click', e => cardButton(e.target));
+}
+
+function cardButton(target) {
+    if (target.className === 'delBtn') {
+	myLibrary.splice(target.parentElement.id, 1);
+	resetLibrary();
+    } else if (target.className === 'readStat') {
+	console.log('wep');
+    }
 }
 
 function addBookInfo(book, card, el, elClass, value) {
