@@ -51,7 +51,7 @@ function createCard(book) {
 	}
 	else {
 	    addBookInfo(book, card, 'p', 'key', key);
-	    addBookInfo(book, card, 'p', 'value', book[key]);
+	    addBookInfo(book, card, 'p', key, book[key]);
 	}
     }
     addBookInfo(book, card, 'button', 'delBtn', 'Delete');
@@ -64,7 +64,19 @@ function cardButton(target) {
 	myLibrary.splice(target.parentElement.id, 1);
 	resetLibrary();
     } else if (target.className === 'readStat') {
-	console.log('wep');
+	const readStatus = target.parentElement.querySelector('.read');
+	readStatus.textContent = readStatusSwitch(readStatus);
+    }
+}
+
+function readStatusSwitch(current) {
+    switch (current.textContent) {
+	case 'Not read yet':
+	    return 'Read';
+	    break;
+	default:
+	    return 'Not read yet';
+	    break;
     }
 }
 
@@ -90,7 +102,7 @@ function submitBook() {
     const book = {};
     dialogInput.forEach( input => {
 	if (input.id === 'read') {
-	    book[input.id] = input.checked;
+	    book[input.id] = checkboxRead(input.checked);
 	}
 	else {
 	    book[input.id] = input.value;
@@ -101,6 +113,17 @@ function submitBook() {
     clearInput();
 }
 
+function checkboxRead(inputCheck) {
+    switch (inputCheck) {
+	case true:
+	    return 'Read';
+	    break;
+	default:
+	    return 'Not read yet';
+	    break;
+    }
+}
+
 function clearInput() {
     for (const input of dialogInput) {
 	input.value = '';
@@ -108,11 +131,4 @@ function clearInput() {
     }
 }
 
-addBookToLibrary('Hobbit', 'JFK');
-addBookToLibrary('Potter', 'Rowlings');
-addBookToLibrary('Foundation', 'Asimov');
-addBookToLibrary('Poirot', 'Christie');
-addBookToLibrary('Cicciomerda', 'Cicciogamer89');
-addBookToLibrary('Cicciomerda2', 'Cicciogamer89');
-addBookToLibrary('Cicciomerda2', 'Cicciogamer89');
 printLibrary();
