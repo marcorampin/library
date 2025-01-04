@@ -60,17 +60,18 @@ function createCard(book) {
 }
 
 function cardButton(target) {
+    const id = target.parentElement.id;
     if (target.className === 'delBtn') {
-	myLibrary.splice(target.parentElement.id, 1);
+	myLibrary.splice(id, 1);
 	resetLibrary();
     } else if (target.className === 'readStat') {
-	const readStatus = target.parentElement.querySelector('.read');
-	readStatus.textContent = readStatusSwitch(readStatus);
+	myLibrary[id].read = readStatusSwitch(myLibrary[id].read);
+	resetLibrary();
     }
 }
 
 function readStatusSwitch(current) {
-    switch (current.textContent) {
+    switch (current) {
 	case 'Not read yet':
 	    return 'Read';
 	    break;
